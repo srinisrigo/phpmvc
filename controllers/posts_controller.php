@@ -2,7 +2,7 @@
   class PostsController {
     public function index() {
       // we store all the posts in a variable
-      $posts = Post::all();
+      $cpts = Post::all();
       require_once('views/posts/index.php');
     }
 
@@ -13,7 +13,7 @@
         return call('pages', 'error');
 
       // we use the given id to get the right post
-      $post = Post::find($_GET['id']);
+      $cpt = Post::find($_GET['id']);
       require_once('views/posts/show.php');
     }
   }

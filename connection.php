@@ -9,7 +9,9 @@
     public static function getInstance() {
       if (!isset(self::$instance)) {
         $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-        self::$instance = new PDO('mysql:host=localhost;dbname=php_mvc', 'root', '', $pdo_options);
+        $pdo_options[PDO::ATTR_EMULATE_PREPARES] = false;
+        //self::$instance = new PDO('mysql:host=localhost;dbname=php_mvc', 'root', '', $pdo_options);
+        self::$instance = new PDO('pgsql:host=127.0.0.1;port=5432;dbname=APR05', 'postgres', '1q2w3e4r5t', $pdo_options);
       }
       return self::$instance;
     }

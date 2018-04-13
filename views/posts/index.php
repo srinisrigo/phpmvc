@@ -1,8 +1,8 @@
-<p>Here is a list of all posts:</p>
+<p>Here is a list of all cpts:</p>
 
-<?php foreach($posts as $post) { ?>
+<?php foreach($cpts as $cpt) { ?>
   <p>
-    <?php echo $post->author; ?>
-    <a href='?controller=posts&action=show&id=<?php echo $post->id; ?>'>See content</a>
+    <?php echo $cpt->display_code; ?>
+    <a href='?controller=posts&action=show&id=<?php echo $cpt->id; ?>'>See content</a>
   </p>
 <?php } ?>
