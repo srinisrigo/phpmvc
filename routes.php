@@ -11,6 +11,11 @@
         require_once('models/post.php');
         $controller = new PostsController();
       break;
+      case 'countries':
+        // we need the model to query the database later in the controller
+        require_once('models/countries.php');
+        $controller = new CountriesController();
+      break;
     }
 
     $controller->{ $action }();
@@ -18,7 +23,8 @@
 
   // we're adding an entry for the new controller and its actions
   $controllers = array('pages' => ['home', 'error'],
-                       'posts' => ['index', 'show']);
+                       'posts' => ['index', 'show'],
+                       'countries' => ['index', 'show']);
 
   if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {

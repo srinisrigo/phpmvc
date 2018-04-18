@@ -1,9 +1,9 @@
 <?php
-  class PostsController {
+  class CountriesController {
     public function index() {
       // we store all the posts in a variable
-      $usertypes = Post::all();
-      require_once('views/posts/index.php');
+      $countries = Countries::all();
+      require_once('views/countries/index.php');
     }
 
     public function show() {
@@ -13,8 +13,8 @@
         return call('pages', 'error');
 
       // we use the given id to get the right post
-      $usertype = Post::find($_GET['id']);
-      require_once('views/posts/show.php');
+      $country = Countries::find($_GET['id']);
+      require_once('views/countries/show.php');
     }
   }
 ?>
