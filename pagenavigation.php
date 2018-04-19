@@ -13,8 +13,8 @@
     'items' => array(
       'pages'  => array('text'=>'Home',  'url'=>'?controller=pages&action=home', 'class'=>null),
       'posts'  => array('text'=>'Away',  'url'=>'?controller=posts&action=index', 'class'=>null),
-      'countries' => array('text'=>'Countries', 'url'=>'?controller=countries&action=index', 'class'=>null),
-    ),
+      'countries' => array('text'=>'Countries', 'url'=>'?controller=countries&action=index', 'class'=>null)
+    )
   ); 
 
   class PageNavigation {
@@ -25,7 +25,7 @@
         
         $html = "";
         foreach($items as $item) {
-          $html .= "<li class='{$item['class']}'><a href='{$item['url']}'>{$item['text']}</a></li>";
+          $html .= "<li class='nav-item {$item['class']}'><a class='nav-link' href='{$item['url']}'>{$item['text']}</a></li>";
         }
         
         return $html;

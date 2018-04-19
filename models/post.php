@@ -21,7 +21,7 @@
       $db = Db::getInstance();
       // we make sure $id is an integer
       $id = intval($id);
-      $req = $db->prepare('SELECT * FROM usertypemaster WHERE id = :id');
+      $req = $db->prepare('SELECT * FROM usertypemaster WHERE userid = :id');
       // the query was prepared, now we replace :id with our actual $id value
       $req->execute(array('id' => $id));
       $usertype = $req->fetchObject();
