@@ -28,11 +28,16 @@
 
   if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
-      call($controller, $action);
+      try {        
+        call($controller, $action);
+      }
+      catch (Exception $ex) {
+        call('pages', 'error');
+      }
     } else {
       call('pages', 'error');
     }
   } else {
     call('pages', 'error');
-  }
+  }  
 ?>
