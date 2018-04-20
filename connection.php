@@ -1,6 +1,7 @@
 <?php
   class Db {
     private static $instance = NULL;
+    private static $pageSize = 5;
 
     private function __construct() {}
 
@@ -14,6 +15,10 @@
         self::$instance = new PDO('pgsql:host=127.0.0.1;port=5432;dbname=HEOSAPR17', 'postgres', '1q2w3e4r5t', $pdo_options);
       }
       return self::$instance;
+    }
+
+    public static function getPageSize() {
+      return self::$pageSize;
     }
   }
 ?>

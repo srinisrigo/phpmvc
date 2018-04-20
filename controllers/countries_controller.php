@@ -1,8 +1,9 @@
 <?php
   class CountriesController {
     public function index() {
+      $page = isset($_GET['page'])? intval($_GET['page']):1;
       // we store all the posts in a variable
-      $countries = Countries::all();
+      $countries = Countries::all($page);
       require_once('views/countries/index.php');
     }
 

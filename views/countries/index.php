@@ -1,13 +1,16 @@
-<table style="margin-left: auto;margin-right: auto;">
-  <caption>
-    Here is a list of all Coutries
-  </caption>
+<table class="table table-bordered table-hover">
   <tfoot>  
+      <td>
+        <a href='?controller=countries&action=index&page=<?php echo $countries->page>1? $countries->page-1:$countries->page; ?>'>&#60;&#60;previous</a>
+      </td> 
       <td colspan=2>
-          <?php echo count($countries); ?> records
+          <?php print_r($countries->records) ?> records
+      </td>
+      <td>
+        <a href='?controller=countries&action=index&page=<?php echo $countries->pages>$countries->page? $countries->page+1:$countries->page; ?>'>next&#62;&#62;</a>
       </td>
   </tfoot>
-  <?php if (count($countries)) foreach($countries as $country) { ?>
+  <?php foreach($countries->list as $country) { ?>
   <tbody>
     <tr>
       <td>
