@@ -20,7 +20,7 @@
         </ul>
       </div>
     </nav>      
-    <div class="container">
+    <div class="container-fluid">
       <?php ini_set("memory_limit",-1); ?>
       <?php require_once('routes.php'); ?>
     </div>

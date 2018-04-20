@@ -1,31 +1,50 @@
-<table class="table table-bordered table-hover">
-  <tfoot>  
-      <td>
-        <a href='?controller=countries&action=index&page=<?php echo $countries->page>1? $countries->page-1:$countries->page; ?>'>&#60;&#60;previous</a>
-      </td> 
-      <td colspan=2>
-          <?php print_r($countries->records) ?> records
-      </td>
-      <td>
-        <a href='?controller=countries&action=index&page=<?php echo $countries->pages>$countries->page? $countries->page+1:$countries->page; ?>'>next&#62;&#62;</a>
-      </td>
-  </tfoot>
-  <?php foreach($countries->list as $country) { ?>
-  <tbody>
-    <tr>
-      <td>
+<form action="index.php?countries=posts&action=index&page=<?php echo $countries->page; ?>" method="POST" class="form-main">
+    <div class="row border-top border-left">
+        <div class="col border-bottom border-right">
+        </div>
+        <div class="col border-bottom border-right">
+            <div class="input-group">
+                <input type="text" class="form-control input-search" placeholder="Search" />
+                <span class="input-group-addon group-icon">
+                    <span class="glyphicon glyphicon-user">
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col border-bottom border-right">
+            <div class="input-group">
+                <input type="text" class="form-control input-search" placeholder="Search" />
+                <span class="input-group-addon group-icon">
+                    <span class="glyphicon glyphicon-user">
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col border-bottom border-right">
+            <div class="input-group">
+                <input type="text" class="form-control input-search" placeholder="Search" />
+                <span class="input-group-addon group-icon">
+                    <span class="glyphicon glyphicon-user">
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div> 
+</form>
+<?php foreach($countries->list as $country) { ?>
+  <div class="row border-top border-left">
+    <div class="col border-bottom border-right">
         <a href='?controller=countries&action=show&id=<?php echo $country->countryid; ?>'>View</a>
-      </td>
-      <td>
+    </div>
+    <div class="col border-bottom border-right">
         <?php echo $country->countrycode; ?>
-      </td>
-      <td>
+    </div>
+    <div class="col border-bottom border-right">
         <?php echo $country->countryname; ?>
-      </td>
-      <td>
+    </div>
+    <div class="col border-bottom border-right">
         <?php echo $country->nationality; ?>
-      </td>
-    </tr>
-  </tbody>
-  <?php } ?>
-</table>
+    </div>
+  </div> 
+<?php } ?>
+<?php echo getFooter($countries, 'countries', 'index'); ?>

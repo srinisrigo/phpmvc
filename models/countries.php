@@ -17,9 +17,10 @@
         $affectedrows = $rows;
       }
       
+      $pgSize = Db::getPageSize();
       $req = $db->prepare('SELECT '.$strfields.' FROM countrydetails LIMIT :size offset :start');
       // the query was prepared, now we replace :id with our actual $id value
-      $req->execute(array('size' => Db::getPageSize(), 'start' => ($page-1)+1));
+      $req->execute(array('size' => $pgSize, 'start' => (($page-1)*$pgSize)));
 
       // we create a list of Post objects from the database results
       foreach($req->fetchAll(PDO::FETCH_OBJ) as $countrydetails) {

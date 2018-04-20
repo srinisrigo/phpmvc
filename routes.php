@@ -28,7 +28,7 @@
 
   if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
-      try {        
+      try {  
         call($controller, $action);
       }
       catch (Exception $ex) {
@@ -39,5 +39,20 @@
     }
   } else {
     call('pages', 'error');
-  }  
+  }    
+
+  function getFooter($obj, $controller, $action) {
+    echo '<div class="row">';
+    echo '<div class="col">';
+    echo '<a href="'.(($obj->page > 1)? ('?controller='.$controller.'&action='.$action.'&page='.($obj->page-1)):'javascript:void(0)').'">&#60;&#60;previous</a>';
+    echo '</div>';
+    echo '<div class="col text-center">';
+    echo $obj->records.' records';
+    echo '</div>';
+    echo '<div class="col text-right">';
+    echo '<a href="'.(($obj->pages > $obj->page)? ('?controller='.$controller.'&action='.$action.'&page='.($obj->page+1)):'javascript:void(0)').'">next&#62;&#62;</a>';
+    echo '</div>';
+    echo '</div>';
+  }
+
 ?>
