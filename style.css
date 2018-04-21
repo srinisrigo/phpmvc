@@ -1,23 +1,12 @@
-/* everywhere else */div.header-div,
-div.content-div,
-div.footer-div {
-    width: 100%;
-}
-
-div.header-div {
-    height: 4%;
-    background-color: #fca;
-}
-
-div.footer-div {
-    height: 3%;
-    background-color: #cfa;
-    text-align: right;
-}
-
-div.content-div {
-    height: 93%;
-    overflow: auto;
+/* everywhere else */
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('./bootstrap/font/glyphicons-halflings-regular.eot');
+    src: url('./bootstrap/font/glyphicons-halflings-regular?#iefix') format('embedded-opentype'),
+         url('./bootstrap/font/glyphicons-halflings-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    -moz-font-feature-settings: "calt=0,liga=0";
 }
 
 /*

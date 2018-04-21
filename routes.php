@@ -1,4 +1,8 @@
 <?php
+	class Heos {
+		public function __construct() {}
+	};
+
   function call($controller, $action) {
     require_once('controllers/' . $controller . '_controller.php');
 
@@ -42,7 +46,7 @@
   }    
 
   function getFooter($obj, $controller, $action) {
-    echo '<div class="row">';
+    echo '<div class="row border-bottom border-right">';
     echo '<div class="col">';
     echo '<a href="'.(($obj->page > 1)? ('?controller='.$controller.'&action='.$action.'&page='.($obj->page-1)):'javascript:void(0)').'">&#60;&#60;previous</a>';
     echo '</div>';
@@ -54,5 +58,12 @@
     echo '</div>';
     echo '</div>';
   }
+
+	function parseInput($data) {
+	  $data = trim($data);
+	  $data = stripslashes($data);
+	  $data = htmlspecialchars($data);
+	  return $data;
+	}
 
 ?>

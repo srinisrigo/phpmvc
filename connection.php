@@ -1,7 +1,7 @@
 <?php
   class Db {
     private static $instance = NULL;
-    private static $pageSize = 5;
+    private static $pageSize = 2;
 
     private function __construct() {}
 

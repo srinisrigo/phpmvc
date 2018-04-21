@@ -1,9 +1,13 @@
 <?php
   class CountriesController {
     public function index() {
-      $page = isset($_GET['page'])? intval($_GET['page']):1;
+		$filter = new Heos();
+		$filter->page = $_SERVER["REQUEST_METHOD"] == "POST"? 1:(isset($_GET['page'])? intval($_GET['page']):1);
+		$filter->countrycode = isset($_POST['code'])? parseInput($_POST['code']):'';
+		$filter->countryname = isset($_POST['name'])? parseInput($_POST['name']):'';
+		$filter->nationality = isset($_POST['nationality'])? parseInput($_POST['nationality']):'';
       // we store all the posts in a variable
-      $countries = Countries::all($page);
+      $countries = Countries::all($filter);
       require_once('views/countries/index.php');
     }
 
