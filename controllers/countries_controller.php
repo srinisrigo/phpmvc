@@ -1,11 +1,16 @@
 <?php
   class CountriesController {
     public function index() {
-		$filter = new Heos();
-		$filter->page = $_SERVER["REQUEST_METHOD"] == "POST"? 1:(isset($_GET['page'])? intval($_GET['page']):1);
-		$filter->countrycode = isset($_POST['code'])? parseInput($_POST['code']):'';
-		$filter->countryname = isset($_POST['name'])? parseInput($_POST['name']):'';
-		$filter->nationality = isset($_POST['nationality'])? parseInput($_POST['nationality']):'';
+		$filter = isset($_SESSION['filter'])? unserialize($_SESSION['filter']):new Heos();
+		$filter->page = ($_SERVER["REQUEST_METHOD"] == "POST")? 1:(isset($_GET['page'])? intval($_GET['page']):1);
+		if (isset($_POST['code'])) $filter->countrycode = parseInput($_POST['code']);
+		else if (!isset($filter->countrycode)) $filter->countrycode = '';
+		if (isset($_POST['name'])) $filter->countryname = parseInput($_POST['name']);
+		else if (!isset($filter->countryname)) $filter->countryname = '';
+		if (isset($_POST['nationality'])) $filter->nationality = parseInput($_POST['nationality']);
+		else if (!isset($filter->nationality)) $filter->nationality = '';
+		
+		$_SESSION['filter'] = serialize($filter);
       // we store all the posts in a variable
       $countries = Countries::all($filter);
       require_once('views/countries/index.php');

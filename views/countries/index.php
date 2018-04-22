@@ -28,6 +28,7 @@
 			</div>
         </div>
     </div> 
+</form>
 <?php foreach($countries->list as $country) { ?>
   <div class="row">
     <div class="col border-bottom border-right">
@@ -46,4 +47,3 @@
 <?php } ?>
 <?php echo getFooter($countries, 'countries', 'index'); ?>
 </div>
-</form>

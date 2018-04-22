@@ -32,12 +32,12 @@
 
   if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
-      try {  
         call($controller, $action);
+      /*try {  
       }
       catch (Exception $ex) {
         call('pages', 'error');
-      }
+      }*/
     } else {
       call('pages', 'error');
     }
