@@ -28,16 +28,16 @@
   // we're adding an entry for the new controller and its actions
   $controllers = array('pages' => ['home', 'error'],
                        'posts' => ['index', 'show'],
-                       'countries' => ['index', 'show']);
+                       'countries' => ['index', 'show', 'validate']);
 
   if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
+      try {  
         call($controller, $action);
-      /*try {  
       }
       catch (Exception $ex) {
         call('pages', 'error');
-      }*/
+      }
     } else {
       call('pages', 'error');
     }

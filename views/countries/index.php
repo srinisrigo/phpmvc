@@ -2,10 +2,11 @@
 <form action="?controller=countries&action=index&page=<?php echo $countries->page; ?>" method="POST" class="form-main">
     <div class="row">
         <div class="col border-bottom border-right">
+        <a href='?controller=countries&action=show&page=<?php echo $countries->page; ?>'>New</a>
         </div>
         <div class="col border-bottom border-right">
             <div class="input-group">
-				<input type="text" class="form-control" placeholder="Code" name="code" value='<?php echo $countries->countrycode; ?>' />
+				<input type="text" class="form-control" placeholder="Code" name="filtercode" value='<?php echo $countries->countrycode; ?>' />
 				<button type="submit" class="input-group-append input-group-text">
 					&#9935;
 				</button>
@@ -13,7 +14,7 @@
         </div>
         <div class="col border-bottom border-right">
             <div class="input-group">
-				<input type="text" class="form-control" placeholder="Name" name="name" value='<?php echo $countries->countryname; ?>' />
+				<input type="text" class="form-control" placeholder="Name" name="filtername" value='<?php echo $countries->countryname; ?>' />
 				<button type="submit" class="input-group-append input-group-text">
 					&#9935;
 				</button>
@@ -21,7 +22,7 @@
         </div>
         <div class="col border-bottom border-right">
             <div class="input-group">
-				<input type="text" class="form-control" placeholder="Nationality" name="nationality" value='<?php echo $countries->nationality; ?>' />
+				<input type="text" class="form-control" placeholder="Nationality" name="filternationality" value='<?php echo $countries->nationality; ?>' />
 				<button type="submit" class="input-group-append input-group-text">
 					&#9935;
 				</button>
@@ -32,7 +33,7 @@
 <?php foreach($countries->list as $country) { ?>
   <div class="row">
     <div class="col border-bottom border-right">
-        <a href='?controller=countries&action=show&id=<?php echo $country->countryid; ?>'>View</a>
+        <a href='?controller=countries&action=show&id=<?php echo $country->countryid; ?>&page=<?php echo $countries->page; ?>'>View</a>
     </div>
     <div class="col border-bottom border-right">
         <?php echo $country->countrycode; ?>
