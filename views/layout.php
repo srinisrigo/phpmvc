@@ -9,18 +9,23 @@
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand navbar-default">
+    <nav class="navbar navbar-expand navbar-default <?php echo isset($_SESSION['heosusermode'])? 'd-block':'d-none'; ?>">
       <div class="collapse navbar-collapse">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">MVC</a>
+          <a class="navbar-brand" href="#">&#9742; MVC &#937;</a>
         </div>
-        <?php require_once('pagenavigation.php'); ?>
-        <ul class="navbar-nav">
-          <?php echo PageNavigation::GenerateMenu($menu); ?>
-        </ul>
+        <div class="collapse navbar-collapse justify-content-end">
+          <?php require_once('pagenavigation.php'); ?>
+          <ul class="navbar-nav">
+            <?php echo PageNavigation::GenerateMenu($menu); ?>
+            <li class='nav-item'>
+              <a class='nav-link' href='?controller=signin&action=signout'>&#10754;</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>      
-    <div class="container-fluid">
+    <div class="container-fluid mb-5">
       <?php ini_set("memory_limit",-1); ?>
       <?php require_once('routes.php'); ?>
     </div>

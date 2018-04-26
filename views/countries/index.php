@@ -1,9 +1,6 @@
-<div class="container border-top border-left">
+<div class="container-fluid border-top border-left">
 <form action="?controller=countries&action=index&page=<?php echo $countries->page; ?>" method="POST" class="form-main">
     <div class="row">
-        <div class="col border-bottom border-right">
-        <a href='?controller=countries&action=show&page=<?php echo $countries->page; ?>'>New</a>
-        </div>
         <div class="col border-bottom border-right">
             <div class="input-group">
 				<input type="text" class="form-control" placeholder="Code" name="filtercode" value='<?php echo $countries->countrycode; ?>' />
@@ -28,13 +25,13 @@
 				</button>
 			</div>
         </div>
+        <div class="col col-auto border-bottom border-right">
+            <a href='?controller=countries&action=show&page=<?php echo $countries->page; ?>'>New</a>
+        </div>
     </div> 
 </form>
 <?php foreach($countries->list as $country) { ?>
   <div class="row">
-    <div class="col border-bottom border-right">
-        <a href='?controller=countries&action=show&id=<?php echo $country->countryid; ?>&page=<?php echo $countries->page; ?>'>View</a>
-    </div>
     <div class="col border-bottom border-right">
         <?php echo $country->countrycode; ?>
     </div>
@@ -44,7 +41,10 @@
     <div class="col border-bottom border-right">
         <?php echo $country->nationality; ?>
     </div>
+    <div class="col col-auto border-bottom border-right">
+        <a href='?controller=countries&action=show&id=<?php echo $country->countryid; ?>&page=<?php echo $countries->page; ?>'>View</a>
+    </div>
   </div> 
 <?php } ?>
-<?php echo getFooter($countries, 'countries', 'index'); ?>
 </div>
+<?php echo getFooter($countries, 'countries', 'index'); ?>

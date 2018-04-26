@@ -20,6 +20,11 @@
         require_once('models/countries.php');
         $controller = new CountriesController();
       break;
+      case 'signin':
+        // we need the model to query the database later in the controller
+        require_once('models/signin.php');
+        $controller = new SigninController();
+      break;
     }
 
     $controller->{ $action }();
@@ -28,6 +33,7 @@
   // we're adding an entry for the new controller and its actions
   $controllers = array('pages' => ['home', 'error'],
                        'posts' => ['index', 'show'],
+                       'signin' => ['challenge', 'show', 'signout'],
                        'countries' => ['index', 'show', 'validate']);
 
   if (array_key_exists($controller, $controllers)) {
@@ -46,7 +52,8 @@
   }    
 
   function getFooter($obj, $controller, $action) {
-    echo '<div class="row border-bottom border-right">';
+    echo '<div class="container-fluid fixed-bottom">';
+    echo '<div class="row">';
     echo '<div class="col">';
     echo '<a href="'.(($obj->page > 1)? ('?controller='.$controller.'&action='.$action.'&page='.($obj->page-1)):'javascript:void(0)').'">&#60;&#60;previous</a>';
     echo '</div>';
@@ -55,6 +62,7 @@
     echo '</div>';
     echo '<div class="col text-right">';
     echo '<a href="'.(($obj->pages > $obj->page)? ('?controller='.$controller.'&action='.$action.'&page='.($obj->page+1)):'javascript:void(0)').'">next&#62;&#62;</a>';
+    echo '</div>';
     echo '</div>';
     echo '</div>';
   }
