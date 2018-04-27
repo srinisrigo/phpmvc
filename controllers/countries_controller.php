@@ -52,11 +52,18 @@
       }
       else {
         try {
-          Countries::save($country);
-          CountriesController::rootindex();
+          $existcount = Countries::exist($country);
+          if ($existcount <= 0) {
+            Countries::save($country);
+            CountriesController::rootindex();
+          }
+          else {
+            $country->warnings = 'either code or name entry exist';
+            require_once('views/countries/show.php');
+          }
         }
         catch (Exception $ex) {
-          $country->warnings = 'Looks like something went wrong. try again';
+          $country->warnings = 'Looks like something went wrong. try again. '.$ex;
           require_once('views/countries/show.php');
         }
       }

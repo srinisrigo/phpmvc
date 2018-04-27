@@ -24,7 +24,7 @@
         $usertype = Signin::challenge($user);
         if (isset($usertype->usertype)) {
           $_SESSION['heosusermode'] = $usertype->usertype;
-          header("Refresh:0; url=index.php");
+          echo '<script type="text/javascript">window.location.href = "?";</script>';
         }
         else {
           $user->warnings = 'Authentication failed due to a credentials mismatch';
@@ -41,8 +41,8 @@
     }
 
     public function signout() {  
-        session_destroy();
-        header("Refresh:0; url=index.php");    
+      session_destroy(); 
+      echo '<script type="text/javascript">window.location.href = "?controller=signin&action=show";</script>';
     }
   }
 ?>
